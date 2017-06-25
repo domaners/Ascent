@@ -2,9 +2,9 @@ package com.domaners.ascent.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.domaners.ascent.Main;
+import com.domaners.ascent.objects.Player;
 
 /**
  * The main class used to render the current game session.
@@ -13,8 +13,8 @@ import com.domaners.ascent.Main;
 public class GameScreen implements Screens {
 
     SpriteBatch batch;
-    Texture planet;
     OrthographicCamera camera;
+    Player player;
 
     public GameScreen() {
 
@@ -23,14 +23,18 @@ public class GameScreen implements Screens {
         camera.update();
 
         batch = new SpriteBatch();
-        planet = new Texture(Gdx.files.internal("PLANET1.png"));
+
+        player = new Player();
 
     }
 
     public void render() {
 
+        player.renderFunctions();
+
         Gdx.gl.glClearColor(9, 6, 38, 1);
         batch.begin();
+        batch.draw(player.getCurrentFrame(), player.getX(), player.getY(), player.getWidth(), player.getHeight());
         batch.end();
 
     }

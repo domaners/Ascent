@@ -9,8 +9,8 @@ public class Main extends ApplicationAdapter {
 
 	Screens currentScreen;
 
-    public static int WINDOW_WIDTH;
-    public static int WINDOW_HEIGHT;
+    public static int WINDOW_WIDTH, WINDOW_HEIGHT;
+    public static float WIDTH_UNIT, HEIGHT_UNIT;
 
 	@Override
 	public void create () {
@@ -22,6 +22,9 @@ public class Main extends ApplicationAdapter {
             WINDOW_WIDTH = 540;
             WINDOW_HEIGHT = 960;
 		}
+
+		WIDTH_UNIT = WINDOW_WIDTH / 100;
+		HEIGHT_UNIT = WINDOW_HEIGHT / 100;
 
         Gdx.graphics.setWindowedMode(WINDOW_WIDTH, WINDOW_HEIGHT);
 		currentScreen = new GameScreen();
