@@ -1,38 +1,33 @@
 package com.domaners.ascent;
 
-import com.badlogic.gdx.Application;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.utils.TimeUtils;
 import com.domaners.ascent.screens.*;
 
 public class Main extends ApplicationAdapter {
 
 	Screens currentScreen;
-
-    public static int WINDOW_WIDTH, WINDOW_HEIGHT;
-    public static float WIDTH_UNIT, HEIGHT_UNIT;
+	long lastRefresh; // Time the screen was last rendered
 
 	@Override
 	public void create () {
 
-		if (Gdx.app.getType() == Application.ApplicationType.Android) {
-			WINDOW_WIDTH = Gdx.graphics.getWidth();
-			WINDOW_HEIGHT = Gdx.graphics.getHeight();
-		} else {
-            WINDOW_WIDTH = 540;
-            WINDOW_HEIGHT = 960;
-		}
-
-		WIDTH_UNIT = WINDOW_WIDTH / 100;
-		HEIGHT_UNIT = WINDOW_HEIGHT / 100;
-
-        Gdx.graphics.setWindowedMode(WINDOW_WIDTH, WINDOW_HEIGHT);
+		lastRefresh = TimeUtils.millis();
+        Gdx.graphics.setWindowedMode(Statics.WINDOW_WIDTH, Statics.WINDOW_HEIGHT);
 		currentScreen = new GameScreen();
+
 	}
 
 	@Override
 	public void render () {
-		currentScreen.render();
+
+		// Limits the GameObject.render() method to 30FPS
+		if (TimeUtils.timeSinceMillis(lastRefresh) > Statics.REFRESH_RATE) {
+			lastRefresh = TimeUtils.millis();
+			currentScreen.render();
+		}
+
 	}
 	
 	@Override

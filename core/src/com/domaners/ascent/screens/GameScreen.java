@@ -3,7 +3,7 @@ package com.domaners.ascent.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.domaners.ascent.Main;
+import com.domaners.ascent.Statics;
 import com.domaners.ascent.objects.Player;
 
 /**
@@ -18,8 +18,8 @@ public class GameScreen implements Screens {
 
     public GameScreen() {
 
-        camera = new OrthographicCamera(Main.WINDOW_WIDTH, Main.WINDOW_HEIGHT);
-        camera.translate(Main.WINDOW_WIDTH, Main.WINDOW_HEIGHT);
+        camera = new OrthographicCamera(Statics.WINDOW_WIDTH, Statics.WINDOW_HEIGHT);
+        camera.translate(Statics.WINDOW_WIDTH, Statics.WINDOW_HEIGHT);
         camera.update();
 
         batch = new SpriteBatch();
