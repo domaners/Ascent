@@ -11,7 +11,9 @@ public interface GameObject {
     Sprite getCurrentFrame();
 
     float getX();
+    void setX(float x);
     float getY();
+    void setY(float y);
     float getWidth();
     float getHeight();
 
