@@ -9,10 +9,11 @@ import com.badlogic.gdx.Gdx;
 public class Statics {
 
     public static int WINDOW_WIDTH, WINDOW_HEIGHT;
-    public static float WIDTH_UNIT, HEIGHT_UNIT;
+    public static float WIDTH_UNIT, HEIGHT_UNIT, X_MOMENTUM;
     public static long REFRESH_RATE;
 
     static {
+
         if (Gdx.app.getType() == Application.ApplicationType.Android) {
             WINDOW_WIDTH = Gdx.graphics.getWidth();
             WINDOW_HEIGHT = Gdx.graphics.getHeight();
@@ -25,6 +26,8 @@ public class Statics {
         HEIGHT_UNIT = WINDOW_HEIGHT / 100;
 
         REFRESH_RATE = 1L / 30L;
+        X_MOMENTUM = 0.3F;
+
     }
 
 }
